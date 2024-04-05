@@ -183,7 +183,7 @@ def main():
                 'Nom Utilisateur 3': [1, np.nan, 3, 4],
                 'Etc ...': [1, np.nan, 3, np.nan]
             })
-            data1.set_index(data1.columns[0], inplace=True)
+            data1.set_index(data1.columns[0], inplace=True)  
             st.dataframe(data1, width=700)
                   
     
@@ -194,6 +194,7 @@ def main():
         if file is not None:
             data = pd.read_csv(file, index_col=False)
             data.set_index(data.columns[0], inplace=True)
+            st.markdown("<h4 style='font-weight:bold;'>L'ensemble des données du CSV</h4>", unsafe_allow_html=True)
             st.dataframe(data)
             
             top_n = st.number_input("Entrer le n du top n:", min_value=1, step=1, format="%d")
