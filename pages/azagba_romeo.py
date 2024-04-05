@@ -9,7 +9,7 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
-
+# Calcul des similiraté entre un film et tous les autres films
 def similarite(x, y) -> float:
     x = x.astype(float)
     y = y.astype(float)
@@ -40,6 +40,7 @@ def similarite(x, y) -> float:
     
     return corr_pear
 
+# Calcul de la note à prédire
 def note(user, film, data, n = 3) -> float:
     if math.isnan(float(data.loc[film, user])):
         x = np.array(data.loc[film])
@@ -136,9 +137,12 @@ def main():
             st.write("Les notes des utilisateurs sur quelques films")
             st.dataframe(data_)
             
-            top_n = st.number_input("Entrer le top n :", min_value=1, step=1, format="%d")
-
+            top_n = st.number_input("Entrer le n du top n:", min_value=1, step=1, format="%d")
+            
+            st.session_state.top_n
             button_data_filled = st.button("Actualiser le tableau complété")
+            
+            
 
             if button_data_filled:
                 
@@ -192,7 +196,7 @@ def main():
             data.set_index(data.columns[0], inplace=True)
             st.dataframe(data)
             
-            top_n = st.number_input("Entrer le top n :", min_value=1, step=1, format="%d")
+            top_n = st.number_input("Entrer le n du top n:", min_value=1, step=1, format="%d")
             
             button_data_filled = st.button("Actualiser le tableau complété", type="primary")
 
