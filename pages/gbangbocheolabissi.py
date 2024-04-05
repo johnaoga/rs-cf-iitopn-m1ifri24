@@ -1,14 +1,14 @@
 import math
 import streamlit as st
 
-from typing import Callable
+from typing import Callable, Optional
 
 import pandas as pd
 import csv
 import io
 
 # Type aliases
-UserRatings = list[int | None]
+UserRatings = list[Optional[int]]
 Dataset = list[UserRatings]
 
 
