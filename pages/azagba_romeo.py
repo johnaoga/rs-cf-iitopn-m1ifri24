@@ -139,10 +139,7 @@ def main():
             
             top_n = st.number_input("Entrer le n du top n:", min_value=1, step=1, format="%d")
             
-            st.session_state.top_n
             button_data_filled = st.button("Actualiser le tableau complété")
-            
-            
 
             if button_data_filled:
                 
