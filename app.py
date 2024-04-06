@@ -100,7 +100,3 @@ else:
     st.warning('Aucune donnée de film saisie!')
 
   
-
-
-
-
