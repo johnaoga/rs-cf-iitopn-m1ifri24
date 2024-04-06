@@ -80,7 +80,7 @@ def main():
     colonne1, colonne2 = st.columns(2)
 
     with colonne1:
-        
+
         st.markdown("<h3 style='font-weight:bold;'>Méthode 1: Insertion manuelle des notes</h4>", unsafe_allow_html=True)
         nbre_user = st.number_input('Entrez le nombre d\'utilisateurs : ', min_value=3, step=1)
         nbre_film = st.number_input('Entrez le nombre de films : ', min_value=3, step=1)
@@ -140,7 +140,7 @@ def main():
                             note_u_f = note(user, film, data,top_n)
                             data.loc[film, user] = note_u_f
 
-                st.write("Le tableau final est le suivant: ")        
+                st.write("Votre tableau final est le suivant: ")        
                 
                 st.session_state.data = data
             
@@ -181,7 +181,7 @@ def main():
                             note_u_f = note(user, film, data,top_n)
                             data.loc[film, user] = note_u_f
 
-                st.write("Le tableau final est le suivant: ")        
+                st.write("Votre tableau final est le suivant: ")        
                 
                 st.session_state.dt = data
             
