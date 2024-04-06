@@ -339,20 +339,22 @@ def main():
         format_func=format_user
     )
 
+    top_n = st.number_input('Enter the number of users that will be considered for the recommandation (top n)',
+                            min_value=1, max_value=max(nb_users - 1, 1))
+    dataset_cleaned = clean_dataset(st.session_state.dataset)
+
     if similarity_function_to_use is not None and selected_user is not None:
         clicked = st.button("Let's go !", type="primary", use_container_width=True)
 
         if clicked:
             try:
                 with st.spinner('Doing computations...'):
-                    dataset_cleaned = clean_dataset(st.session_state.dataset)
                     similarities = map_similarities(
                         dataset_cleaned,
                         selected_user,
                         FUNCTIONS_MAPPED[similarity_function_to_use]
                     )
 
-                    top_n = max(1, min(3, nb_users // 4))
                     top_indexes = get_top_indexes(top_n, similarities, selected_user)
                     ratings = estimate_ratings(dataset_cleaned, top_indexes, similarities)
 
@@ -383,10 +385,31 @@ def main():
                     index_highest_rated_movie, rating_highest_rated_movie = max(predicted.items(), key=lambda x: x[1])
                     st.write(
                         f"The recommended movie would be the movie n°{index_highest_rated_movie + 1} "
-                        f"since the estimated rating is {rating_highest_rated_movie} which is the highest"
+                        f"since the estimated rating is {rating_highest_rated_movie} which is the highest "
                         f"estimated rating for a movie not yet rated by the {format_user(selected_user)}")
             except:
                 st.error('An error occurred, make sure all the users have given at least one rating')
+
+    if similarity_function_to_use is not None:
+        # Filling the dataset
+        dataset_completed = dataset_cleaned[:]
+        for user_index in range(len(dataset_cleaned)):
+            similarities = map_similarities(
+                dataset_cleaned,
+                user_index,
+                FUNCTIONS_MAPPED[similarity_function_to_use]
+            )
+
+            top_indexes = get_top_indexes(top_n, similarities, selected_user)
+            ratings = estimate_ratings(dataset_cleaned, top_indexes, similarities)
+
+            for movie_rating_index in range(len(dataset_completed[user_index])):
+                if dataset_completed[user_index][movie_rating_index] is None:
+                    dataset_completed[user_index][movie_rating_index] = round(ratings[movie_rating_index])
+
+        st.write("Completed dataset")
+
+        edited_df = st.data_editor(convert_to_dataframe(dataset_completed), use_container_width=True, disabled=True)
 
 
 if __name__ == "__main__":
