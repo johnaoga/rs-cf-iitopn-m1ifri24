@@ -74,6 +74,7 @@ def note(user, film, data,n=2):
 def verify_duplicate_value(liste, value):
     return liste.count(value) > 1
 
+
 def main():
     st.title(":blue[Filtrage collaboratif SR Calcul des notes manquantes]")
     colonne1, colonne2 = st.columns(2)
