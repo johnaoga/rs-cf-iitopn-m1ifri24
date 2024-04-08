@@ -15,9 +15,7 @@ jsonschema-specifications==2023.12.1
 markdown-it-py==3.0.0
 MarkupSafe==2.1.5
 mdurl==0.1.2
-numpy==1.26.4
 packaging==23.2
-pandas==2.2.1
 pillow==10.2.0
 protobuf==4.25.3
 pyarrow==15.0.2
@@ -31,7 +29,6 @@ rich==13.7.1
 rpds-py==0.18.0
 six==1.16.0
 smmap==5.0.1
-streamlit==1.32.2
 tenacity==8.2.3
 toml==0.10.2
 toolz==0.12.1
@@ -40,5 +37,9 @@ typing_extensions==4.10.0
 tzdata==2024.1
 urllib3==2.2.1
 watchdog==4.0.0
+streamlit
+pandas
+numpy
+
 
 # DEGAN Daryl
