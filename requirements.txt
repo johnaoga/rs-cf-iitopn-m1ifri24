@@ -1,6 +1,6 @@
-streamlit
-pandas
-numpy
+pandas 
+streamlit 
+scikit-learn
 
-#KOMACLO Julien
+#Dagba Paolo
 
