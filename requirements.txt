@@ -4,3 +4,8 @@ numpy
 
 #KOMACLO Julien
 
+#DAGBA Paola
+streamlit
+pandas
+cosine_similarity
+
