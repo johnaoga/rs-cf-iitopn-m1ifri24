@@ -1,0 +1,4 @@
+pip install streamlit
+pip install pandas
+
+# DJEGO Marie-Julio Brice (Génie Logiciel)
